@@ -40,7 +40,7 @@ Start after watching the lecture corresponding to the release date of that assig
 
 ### Study Log
 #### Week 01
-- [ ] HW0 (Basic Java Programs)
+- [x] [Mon 20 Nov 2023]  HW0 (Basic Java Programs)
 - [ ] Discussion 1 (Intro to Java)
 - [ ] Lecture 1 or Reading 1.1 (Intro, Hello World Java)
 - [ ] Lab 1 Setup (Setting Up Your Computer)
