@@ -59,7 +59,7 @@ Start after watching the lecture corresponding to the release date of that assig
 - [x] [Mon 20 Nov 2023] Discussion 1 (Intro to Java)
 - [x] [Mon 20 Nov 2023] Lecture 1 or Reading 1.1 (Intro, Hello World Java)
 - [x] [Mon 20 Nov 2023] Lab 1 Setup (Setting Up Your Computer)
-- [ ] Lab 1 (IntelliJ, git)
+- [x] [Mon 20 Nov 2023] Lab 1 (IntelliJ, git)
 - [ ] Lecture 2 or Reading 1.2 (Defining and Using Classes)
 
 #### Get started in the first few weeks
