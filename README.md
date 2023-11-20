@@ -19,12 +19,12 @@ You can only run the grader 3 times an hour. This is to dissuade you from using 
 
 
 ### Course Structure
-#### First point contact with topics
+#### First point contact with topics (Small majoryty of learning)
 1. Pre-recorded lecture videos and Live Q&A (3 per week)
 2. [Readings](https://joshhug.gitbooks.io/hug61b), which are redundant with videos
 3. Guides, a summary of each day's content and additional optional exercises
 
-#### Practice the materials
+#### Practice the materials (Vast majoryty of learning)
 1. Sections
     - Discussions (after watching Monday lecture): in-person Zoom sessions + worksheets focus material learn in the past week (1 hour per week)
     - Labs (after watching Wednesday lecture): in-person Discord sessions + specs with autograder (2 hours per week)
@@ -37,12 +37,27 @@ Start after watching the lecture corresponding to the release date of that assig
         - Project 0 (2048: Inro to Java) and 1 (Deques: Basic Design, Testing, and Code Review): relatively easier, taking less time and with greater levels of scaffolding
         - Project 2 (TBA: Design, Large Scale Implementation): spread over a long period of time
         - Project 3 (BYOW: Large Scale Design): capstone project in which designing a project from scratch
+### Course Frames
+#### Phase 1: Programming Intensive Introduction to Java (Week 1-4)
+- Four labs to introduce various tools
+- HW0, browser-based
+- Project 0 and Project 1
+- Midterm 1
+#### Pahse 2: Data Structure (Week 5-10)
+- Programming HW1 and exam-prep HW2 for applications and deeper insight into data structures
+- Large solo Project 2
+- Lab 5: Peer review on project ;, Two labs that implement data structures (hash table and BST); Remaining labs are focused on project 2
+- Midterm 2
+#### Phase 3: Algorithms and Software Engineering (Week 10-14)
+- Project 3: Build Your Own World: An open ended project where you and a partner build a 2D world with physics according to your own design.
+- Labs devoted to project
+- One theory homework
 
 ### Study Log
 #### Week 01
 - [x] [Mon 20 Nov 2023] HW0 (Basic Java Programs)
 - [x] [Mon 20 Nov 2023] Discussion 1 (Intro to Java)
-- [ ] Lecture 1 or Reading 1.1 (Intro, Hello World Java)
+- [x] [Mon 20 Nov 2023] Lecture 1 or Reading 1.1 (Intro, Hello World Java)
 - [ ] Lab 1 Setup (Setting Up Your Computer)
 - [ ] Lab 1 (IntelliJ, git)
 - [ ] Lecture 2 or Reading 1.2 (Defining and Using Classes)
