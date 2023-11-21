@@ -64,7 +64,7 @@ Start after watching the lecture corresponding to the release date of that assig
 - [x] [Tue 21 Nov 2023] Project 0 (2048)
 
 #### Week 02
-- [ ] Lecture 3 or Reading 3.1 (Testing)
+- [x] [Tue 21 Nov 2023] Lecture 3 or Reading 3.1 (Testing)
 - [ ] Lecture 4 or Reading 2.1 (References, Recursion, and Lists)
 - [ ] Discussion 2 (Scope, Pass-by-Value, Static)
 - [ ] Lecture 5 or Reading 2.2 (SLLists, Nested Classes, Sentinel Nodes)
