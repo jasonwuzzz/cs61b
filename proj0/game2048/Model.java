@@ -1,5 +1,6 @@
 package game2048;
 
+import java.nio.ByteOrder;
 import java.util.Formatter;
 import java.util.Observable;
 
@@ -113,12 +114,58 @@ public class Model extends Observable {
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
+        Board b = this.board;
+        b.setViewingPerspective(side);
+        for (int j = 0; j < b.size(); j = j + 1) {
+            int beforeMerged = b.size();
+            for (int i = b.size() - 1; i >= 0; i = i - 1) {
+                if (b.tile(j, i) != null) {
+                    Tile currentTile = b.tile(j, i);
+                    int rowToMove = whereToMove(b, currentTile.value(), j, i, beforeMerged);
+                    if (rowToMove != i) {
+                        changed = true;
+                    }
+                    if (b.move(j, rowToMove, currentTile)) {
+                        this.score += b.tile(j, rowToMove).value();
+                        beforeMerged = rowToMove;
+                    }
+                }
+            }
+        }
+        b.setViewingPerspective(Side.NORTH);
 
         checkGameOver();
         if (changed) {
             setChanged();
         }
         return changed;
+    }
+
+    /**
+     * Returns the row index of a TILE to move to.
+     *
+
+     * 1. If there is no tiles above current tile (b.tile(col, row)), move it under the merged tile.
+     * 2. Else if there is some tile and they have the same value, then merge them, else move it
+     * under this specific tile.
+     * @param col : the column of tile from left-lower corner.
+     * @param row : the row of tile from left-lower corner.
+     * @param beforeMerged : represents the location of the nearest merged tile,
+     *                     default is b.size(), meaning nothing has merged.
+     */
+    public int whereToMove(Board b, int value, int col, int row, int beforeMerged) {
+        for (int i = row + 1; i < beforeMerged; i = i + 1) {
+            if (b.tile(col, i) == null) {
+                continue;
+            }
+            Tile above = b.tile(col, i);
+            if (above.value() != value) {
+                return i - 1;
+            } else {
+                return i;
+            }
+        }
+        return beforeMerged - 1;
     }
 
     /** Checks if the game is over and sets the gameOver variable
@@ -140,7 +187,7 @@ public class Model extends Observable {
         // TODO: Fill in this function.
         for (int i = 0; i < b.size(); i = i + 1) {
             for (int j = 0; j < b.size(); j = j + 1) {
-                if (b.tile(i, j) == null) {
+                if (b.tile(j, i) == null) {
                     return true;
                 }
             }
@@ -157,7 +204,7 @@ public class Model extends Observable {
         // TODO: Fill in this function.
         for (int i = 0; i < b.size(); i = i + 1) {
             for (int j = 0; j < b.size(); j = j + 1) {
-                if (b.tile(i, j) != null && b.tile(i, j).value() == MAX_PIECE) {
+                if (b.tile(j, i) != null && b.tile(j, i).value() == MAX_PIECE) {
                     return true;
                 }
             }
@@ -178,7 +225,7 @@ public class Model extends Observable {
         }
         for (int i = 0; i < b.size(); i = i + 1) {
             for (int j = 0; j < b.size(); j = j + 1) {
-                if (b.tile(i, j) != null && hasSameAdjacentTile(b, b.tile(i, j))) {
+                if (b.tile(j, i) != null && hasSameAdjacentTile(b, b.tile(j, i))) {
                      return true;
                 }
             }
@@ -196,7 +243,7 @@ public class Model extends Observable {
         for (int[] offset : offsets) {
             int row = tile.row() + offset[0];
             int col = tile.col() + offset[1];
-            if (isValidTile(b, row, col) && b.tile(row, col).value() == tile.value()) {
+            if (isValidIndex(b, row, col) && b.tile(col, row).value() == tile.value()) {
                 return true;
             }
         }
@@ -206,7 +253,7 @@ public class Model extends Observable {
     /**
      * Returns true if the position (i, j) is valid and the tile is not empty.
      */
-    public static boolean isValidTile(Board b, int i, int j) {
+    public static boolean isValidIndex(Board b, int i, int j) {
         if (i < 0 || j < 0 || i >= b.size() || j >= b.size()) {
             return false;
         }
