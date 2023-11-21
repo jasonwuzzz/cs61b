@@ -173,9 +173,45 @@ public class Model extends Observable {
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+        if (emptySpaceExists(b)) {
+            return true;
+        }
+        for (int i = 0; i < b.size(); i = i + 1) {
+            for (int j = 0; j < b.size(); j = j + 1) {
+                if (b.tile(i, j) != null && hasSameAdjacentTile(b, b.tile(i, j))) {
+                     return true;
+                }
+            }
+        }
         return false;
     }
 
+    /**
+     * Returns true if any adjacent tile has the same value with tile TILE.
+     * Adjacent means tile's location is one off by column or row.
+     * Adjacent tile must have valid location index.
+     */
+    public static boolean hasSameAdjacentTile(Board b, Tile tile) {
+        int[][] offsets = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        for (int[] offset : offsets) {
+            int row = tile.row() + offset[0];
+            int col = tile.col() + offset[1];
+            if (isValidTile(b, row, col) && b.tile(row, col).value() == tile.value()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns true if the position (i, j) is valid and the tile is not empty.
+     */
+    public static boolean isValidTile(Board b, int i, int j) {
+        if (i < 0 || j < 0 || i >= b.size() || j >= b.size()) {
+            return false;
+        }
+        return true;
+    }
 
     @Override
      /** Returns the model as a string, used for debugging. */
