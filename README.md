@@ -61,6 +61,7 @@ Start after watching the lecture corresponding to the release date of that assig
 - [x] [Mon 20 Nov 2023] Lab 1 Setup (Setting Up Your Computer)
 - [x] [Mon 20 Nov 2023] Lab 1 (IntelliJ, git)
 - [x] [Mon 20 Nov 2023] Lecture 2 or Reading 1.2 (Defining and Using Classes)
+- [x] [Tue 21 Nov 2023] Project 0 (2048)
 
 #### Get started in the first few weeks
 - [ ] Lecture 3 or Reading 2.1 (References, Recursion, and Lists)
