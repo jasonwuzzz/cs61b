@@ -73,7 +73,7 @@ Start after watching the lecture corresponding to the release date of that assig
 
 #### Week 03
 - [x] [Tue 28 Nov 2023] Lecture 6 or Reading 2.3, 2.4 (LLists, Arrays)
-- [ ] Lecture 7 or Reading 2.5 (ALists, Resizing, vs. SLists)
+- [x] [Tue 28 Nov 2023] Lecture 7 or Reading 2.5 (ALists, Resizing, vs. SLists)
 - [ ] Lecture 8 or Reading 4.1 (Inheritance, Implements)
 - [ ] Discussion 3 (Scope, Static, and Linked Lists)
 - [ ] Exam Prep Discussion 3 (Arrays, Linked Lists)
