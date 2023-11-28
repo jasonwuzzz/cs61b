@@ -1,4 +1,4 @@
-package lists2;
+package lec5_lists2;
 
 /** An SLList is a list of integers, which hides the terrible truth
    * of the nakedness within. */
@@ -33,6 +33,31 @@ public class SLList {
 		sentinel = new IntNode(63, null);
 		sentinel.next = new IntNode(x, null);
 		size = 1;
+	}
+
+	/** List 2 Study Guide: B Level Question 1
+	 * Delete the first element in SLList*/
+	public void deleteFirst() {
+		if (sentinel.next != null) {
+			sentinel.next = sentinel.next.next;
+			size = size - 1;
+		}
+	}
+
+	/** List 2 Study Guide: B Level Question 2
+	 *
+	 * A constructor that takes in an array of integers,
+	 * and creates an SLList with those integers.*/
+	public SLList(int[] x) {
+		sentinel = new IntNode(63, null);
+		size = 0;
+		IntNode p = sentinel;
+
+		for (int e: x) {
+			p.next = new IntNode(e, null);
+			size = size + 1;
+			p = p.next;
+		}
 	}
 
  	/** Adds x to the front of the list. */
