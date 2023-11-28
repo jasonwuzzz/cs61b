@@ -66,18 +66,21 @@ Start after watching the lecture corresponding to the release date of that assig
 #### Week 02
 - [x] [Tue 21 Nov 2023] Lecture 3 or Reading 3.1 (Testing)
 - [x] [Sun 26 Nov 2023] Lecture 4 or Reading 2.1 (References, Recursion, and Lists)
-- [x] [Sun 26 Nov 2023] Discussion 2 (Scope, Pass-by-Value, Static)
+- [x] [Tue 28 Nov 2023] Discussion 2 (Intro to Java)
+- [x] [Sun 26 Nov 2023] Exam Prep Discussion 2 (Scope, Pass-by-Value, Static)
 - [x] [Tue 28 Nov 2023] Lecture 5 or Reading 2.2 (SLLists, Nested Classes, Sentinel Nodes)
-- [ ] Lab 2 (Testind and Debugging)
+- [x] [Tue 28 Nov 2023] Lab 2 (Testind and Debugging)
+
+#### Week 03
+- [ ] Lecture 6 or Reading 2.3, 2.4 (LLists, Arrays)
+- [ ] Lecture 7 or Reading 2.5 (ALists, Resizing, vs. SLists)
+- [ ] Lecture 8 or Reading 4.1 (Inheritance, Implements)
+- [ ] Discussion 3 (Scope, Static, and Linked Lists)
+- [ ] Exam Prep Discussion 3 (Arrays, Linked Lists)
+- [ ] Lab 3 (Randomized Testing and Timing Tests)
+- [ ] Project 1 (Data Structures)
 
 #### Get started in the first few weeks
-- [ ] Lecture 5 or Reading 2.3, 2.4 (LLists, Arrays)
-- [ ] Lecture 6 or Reading 2.5 (ALists, Resizing, vs. SLists)
-- [ ] Discussion 3 (Linked Lists, Arrays)
-- [ ] Project 1 (Data Structures)
-- [ ] Lecture 7 or Reading 3.1 (Testing)
-- [ ] Lab 3 (Randomized Testing and Timing Tests)
-- [ ] Lecture 8 or Reading 4.1 (Inheritance, Implements)
 - [ ] Lecture 9 or Reading 4.2 (Extends, Casting, Higher Order Functions)
 - [ ] Discussion 10 (Inheritance)
 - [ ] Lecture 10 or Reading 4.3 (Subtype Polymorphism vs. HoFs)
