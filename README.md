@@ -72,7 +72,7 @@ Start after watching the lecture corresponding to the release date of that assig
 - [x] [Tue 28 Nov 2023] Lab 2 (Testind and Debugging)
 
 #### Week 03
-- [ ] Lecture 6 or Reading 2.3, 2.4 (LLists, Arrays)
+- [x] [Tue 28 Nov 2023] Lecture 6 or Reading 2.3, 2.4 (LLists, Arrays)
 - [ ] Lecture 7 or Reading 2.5 (ALists, Resizing, vs. SLists)
 - [ ] Lecture 8 or Reading 4.1 (Inheritance, Implements)
 - [ ] Discussion 3 (Scope, Static, and Linked Lists)
