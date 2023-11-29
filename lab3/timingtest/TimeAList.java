@@ -33,7 +33,6 @@ public class TimeAList {
         ns.addLast(32000);
         ns.addLast(64000);
         ns.addLast(128000);
-        ns.addLast(10000000);
         for (int i = 0; i < ns.size(); i = i + 1) {
             AList<Integer> aList = new AList<>();
             int size = ns.get(i);
