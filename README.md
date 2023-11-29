@@ -77,7 +77,7 @@ Start after watching the lecture corresponding to the release date of that assig
 - [ ] Lecture 8 or Reading 4.1 (Inheritance, Implements)
 - [ ] Discussion 3 (Scope, Static, and Linked Lists)
 - [ ] Exam Prep Discussion 3 (Arrays, Linked Lists)
-- [ ] Lab 3 (Randomized Testing and Timing Tests)
+- [x] [Wed 29 Nov 2023] Lab 3 (Randomized Testing and Timing Tests)
 - [ ] Project 1 (Data Structures)
 
 #### Get started in the first few weeks
