@@ -15,8 +15,8 @@ public class LinkedListDeque<T> {
     }
 
     /** Instance Variables */
-    int size;
-    TNode sentinel;
+    private int size;
+    private TNode sentinel;
 
     /** Creates an empty linked list deque. */
     public LinkedListDeque() {

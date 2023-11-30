@@ -1,5 +1,7 @@
 package deque;
 
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.Stopwatch;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -111,4 +113,111 @@ public class LinkedListDequeTest {
             assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
         }
     }
+
+    @Test
+    public void randomizedComparisonTest() {
+        LinkedListDeque<Integer> L = new LinkedListDeque<>();
+        ArrayDeque<Integer> M = new ArrayDeque<>();
+
+        int N = 1000000;
+        for (int i = 0; i < N; i += 1) {
+            int operationNumber = StdRandom.uniform(0, 6);
+            if (operationNumber == 0) {
+                // addFirst
+                int randVal = StdRandom.uniform(0, 100);
+                L.addFirst(randVal);
+                M.addFirst(randVal);
+                assertEquals(L.get(0), M.get(0));
+            } else if (operationNumber == 1) {
+                // addLast
+                int randVal = StdRandom.uniform(0, 100);
+                L.addLast(randVal);
+                M.addLast(randVal);
+                assertEquals(L.get(L.size() - 1), M.get(M.size() - 1));
+            } else if (operationNumber == 2) {
+                // removeFirst
+                assertEquals(L.removeFirst(), M.removeFirst());
+            } else if (operationNumber == 3) {
+                // removeLast
+                assertEquals(L.removeLast(), M.removeLast());
+            } else if (operationNumber == 4) {
+                assertEquals(L.get(i), M.get(i));
+            } else if (operationNumber == 5) {
+                assertEquals(L.size(), M.size());
+            }
+        }
+    }
+
+    /** Time Testing */
+
+    private static void printTimingTable(LinkedListDeque<Integer> Ns, LinkedListDeque<Double> times, LinkedListDeque<Integer> opCounts) {
+        System.out.printf("%12s %12s %12s %12s\n", "N", "time (s)", "# ops", "microsec/op");
+        System.out.printf("------------------------------------------------------------\n");
+        for (int i = 0; i < Ns.size(); i += 1) {
+            int N = Ns.get(i);
+            double time = times.get(i);
+            int opCount = opCounts.get(i);
+            double timePerOp = time / opCount * 1e6;
+            System.out.printf("%12d %12.2f %12d %12.2f\n", N, time, opCount, timePerOp);
+        }
+    }
+
+    public static void main(String[] args) {
+        timeAddFirst();
+        // timeAddLast();
+        // timeRemoveFirst();
+        // timeRemoveLast();
+        // timeSize();
+         timeIteratingOver();
+    }
+
+    public static void timeAddFirst() {
+        LinkedListDeque<Integer> ns = new LinkedListDeque<>();
+        LinkedListDeque<Double> ts = new LinkedListDeque<>();
+        ns.addLast(1000);
+        ns.addLast(2000);
+        ns.addLast(4000);
+        ns.addLast(8000);
+        ns.addLast(16000);
+        ns.addLast(32000);
+        ns.addLast(64000);
+        ns.addLast(128000);
+        for (int i = 0; i < ns.size(); i = i + 1) {
+            LinkedListDeque<Integer> lld = new LinkedListDeque<>();
+            int size = ns.get(i);
+            Stopwatch sw = new Stopwatch();
+            for (int j = 0; j < size; j = j + 1) {
+                lld.addLast(j);
+            }
+            ts.addLast(sw.elapsedTime());
+        }
+        System.out.println("AddFirst:");
+        printTimingTable(ns, ts, ns);
+    }
+
+    public static void timeIteratingOver() {
+        LinkedListDeque<Integer> ns = new LinkedListDeque<>();
+        LinkedListDeque<Double> ts = new LinkedListDeque<>();
+        ns.addLast(1000);
+        ns.addLast(2000);
+        ns.addLast(4000);
+        ns.addLast(8000);
+        ns.addLast(16000);
+        ns.addLast(32000);
+        ns.addLast(64000);
+        for (int i = 0; i < ns.size(); i = i + 1) {
+            LinkedListDeque<Integer> lld = new LinkedListDeque<>();
+            int size = ns.get(i);
+            for (int j = 0; j < size; j = j + 1) {
+                lld.addLast(j);
+            }
+            Stopwatch sw = new Stopwatch();
+            for (int j = 0; j < size; j = j + 1) {
+                lld.get(lld.size() - 1);
+            }
+            ts.addLast(sw.elapsedTime());
+        }
+        System.out.println("Iterating Over the LinkedListDeque using for-each loop should take time proportional to the number of items:");
+        printTimingTable(ns, ts, ns);
+        }
 }

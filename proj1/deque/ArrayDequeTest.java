@@ -1,5 +1,6 @@
 package deque;
 
+import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -71,8 +72,8 @@ public class ArrayDequeTest {
     @Test
     /* Check if you can create ArrayDeques with different parameterized types*/
     public void multipleParamTest() {
-        ArrayDeque<String>  ad1 = new ArrayDeque<>();
-        ArrayDeque<Double>  ad2 = new ArrayDeque<>();
+        ArrayDeque<String> ad1 = new ArrayDeque<>();
+        ArrayDeque<Double> ad2 = new ArrayDeque<>();
         ArrayDeque<Boolean> ad3 = new ArrayDeque<>();
 
         ad1.addFirst("string");
