@@ -3,6 +3,7 @@ package deque;
 import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.Iterator;
 
 
 /** Performs some basic array tests. */
@@ -111,5 +112,37 @@ public class ArrayDequeTest {
         for (double i = 99; i > 50; i--) {
             assertEquals("Should have the same value", i, (double) ad1.removeLast(), 0.0);
         }
+    }
+
+    @Test
+    /* Test enhanced for-each loop syntax */
+    public void iterableTest() {
+        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        for (int i = 0; i < 100; i++) {
+            ad1.addLast(i);
+        }
+
+        int counter = 0;
+        Iterator<Integer> iter = ad1.iterator();
+        while (iter.hasNext()) {
+            assertEquals(counter, (int) iter.next());
+            counter += 1;
+        }
+    }
+
+    @Test
+    public void equalTest() {
+        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        ArrayDeque<Integer> ad2 = new ArrayDeque<>();
+        for (int i = 0; i < 100; i++) {
+            ad1.addLast(i);
+            ad2.addLast(i);
+        }
+        assertTrue(ad1.equals(ad2));
+        assertTrue(ad1.equals(ad1));
+        ad2.removeLast();
+        assertFalse(ad1.equals(ad2));
+        ad2.addLast(1);
+        assertFalse(ad1.equals(ad2));
     }
 }

@@ -1,6 +1,9 @@
 package deque;
 
-public class ArrayDeque<T> {
+import java.util.Iterator;
+
+
+public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
     private T[] items;
     /** Keeps track of deque's front, the index of the first item is
      * (front + 1) % items.length. Front is the position to add first.
@@ -12,7 +15,17 @@ public class ArrayDeque<T> {
     private int back;
     private int size;
 
-    /** Creates an empty array deque. */
+    /** RULES
+     * 1. add and remove must take constant time, except during resizing operations.
+     * 2. get and size must take constant time.
+     * 3. The starting size of your array should be 8.
+     * 4. The amount of memory that your program uses at any given time must be
+     * proportional to the number of items.
+     *      - For arrays of length 16 or more, your usage factor should always be at
+     *        least 25%.
+     *      - For smaller arrays, your usage factor can be arbitrarily low.
+     */
+
     public ArrayDeque() {
         items = (T[]) new Object[8];
         front = 0;
@@ -20,11 +33,7 @@ public class ArrayDeque<T> {
         size = 0;
     }
 
-    ////////////////////////
-    //         APIs       //
-    ////////////////////////
-
-    public void resize(int capacity) {
+    private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         for (int  i = (front + 1) % items.length, j = 1; j < size + 1; i = (i + 1) % items.length, j += 1) {
             a[j] = items[i];
@@ -34,8 +43,6 @@ public class ArrayDeque<T> {
         items = a;
     }
 
-    /** Adds an item of type T to the back of the deque.
-     * Assume that item is never null. */
     public void addFirst(T item) {
         if (size() == items.length) {
             resize(items.length * 2);
@@ -46,8 +53,6 @@ public class ArrayDeque<T> {
         size += 1;
     }
 
-    /** Adds an item of type T to the back of the deque.
-     * Assume that item is never null. */
     public void addLast(T item) {
         if (size() == items.length) {
             resize(items.length * 2);
@@ -58,18 +63,14 @@ public class ArrayDeque<T> {
         size += 1;
     }
 
-    /** Returns true if deque is empty, false otherwise. */
     public boolean isEmpty() {
         return size() == 0;
     }
 
-    /** Returns the number of items in the deque. */
     public int size() {
         return size;
     }
 
-    /** Prints the items in the deque from first to last, separated by a space.
-     * Once all the items have been printed, print out a new line.*/
     public void printDeque() {
         for (int i = (front + 1) % items.length; i < back; i = (i + 1) % items.length) {
             System.out.print(items[i] + " ");
@@ -77,14 +78,12 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
-    /** For arrays of length 16 or more, your usage factor should always be at least 25%.
-     * This means that before performing a remove operation that will bring the number of
-     * elements in the array under 25% the length of the array, you should resize the size
-     * of the array down. For smaller arrays, your usage factor can be arbitrarily low. */
-
-    /** Removes and returns the item at the front of the deque.
-     * If no such item exists, returns null. */
     public T removeFirst() {
+        /**
+         * Before performing a remove operation that will bring the number
+         * of elements in the array under 25% the length of the array, you
+         * should resize the size of the array down.
+         */
         if (size() >= 16 && size * 1.0 / items.length <= 0.25) {
             resize((int) (items.length * 0.5));
         }
@@ -99,8 +98,6 @@ public class ArrayDeque<T> {
         return item;
     }
 
-    /** Removes and returns the item at the back of the deque.
-     * If no such item exists, returns null. */
     public T removeLast() {
         if (size >= 16 && size * 1.0 / items.length <= 0.25) {
             resize((int) (items.length * 0.5));
@@ -116,9 +113,6 @@ public class ArrayDeque<T> {
         return item;
     }
 
-    /** Gets the item at the given index,
-     * where 0 is the front, 1 is the next item, and so forth.
-     * If no such item exists, returns null. Must not alter the deque! */
     public T get(int index) {
         if (index < size() && index >= 0) {
             // Transform user-perspective index to real array implementation index.
@@ -128,18 +122,48 @@ public class ArrayDeque<T> {
         return null;
     }
 
-    /** The Deque objects we’ll make are iterable (i.e. Iterable<T>)
-     * so we must provide this method to return an iterator.
-     public Iterator<T> iterator() {
-
+    public Iterator<T> iterator() {
+        return new ArrayDequeIterator();
      }
-     */
 
-    /** Returns whether or not the parameter o is equal to the Deque.
-     o is considered equal if it is a Deque and if it contains the same contents
-     (as governed by the generic T’s equals method) in the same order.
-     public boolean equals(Object o) {
-         return false;
-     }
-     */
+    private class ArrayDequeIterator implements Iterator<T> {
+        public int pos;
+
+        public ArrayDequeIterator(){
+            pos = front + 1;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return pos < back;
+        }
+
+        @Override
+        public T next() {
+           if (hasNext()) {
+               T result = items[pos];
+               pos += 1;
+               return result;
+           }
+           return null;
+        }
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) {
+             return true;
+         }
+        if (o instanceof ArrayDeque other) {
+             if (other.size() != this.size()) {
+                 return false;
+             }
+             for (int i = 0; i < size(); i += 1) {
+                 if (!other.get(i).equals(get(i))) {
+                     return false;
+                 }
+             }
+             return true;
+         }
+        return false;
+    }
 }

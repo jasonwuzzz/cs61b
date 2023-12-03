@@ -127,7 +127,7 @@ public class LinkedListDequeTest {
                 int randVal = StdRandom.uniform(0, 100);
                 L.addFirst(randVal);
                 M.addFirst(randVal);
-                assertEquals(L.get(0), M.get(0));
+                assertEquals(L.getRecursive(0), M.get(0));
             } else if (operationNumber == 1) {
                 // addLast
                 int randVal = StdRandom.uniform(0, 100);
@@ -141,11 +141,41 @@ public class LinkedListDequeTest {
                 // removeLast
                 assertEquals(L.removeLast(), M.removeLast());
             } else if (operationNumber == 4) {
-                assertEquals(L.get(i), M.get(i));
+                assertEquals(L.getRecursive(i), M.get(i));
             } else if (operationNumber == 5) {
                 assertEquals(L.size(), M.size());
             }
         }
+    }
+
+    @Test
+    public void iterableTest() {
+        LinkedListDeque<Integer> lld = new LinkedListDeque<>();
+        for (int i = 0; i < 10; i += 1) {
+            lld.addLast(i);
+        }
+
+        int counter = 0;
+        for (int item : lld) {
+            assertEquals(counter, item);
+            counter += 1;
+        }
+    }
+
+    @Test
+    public void equalTest() {
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
+        LinkedListDeque<Integer> lld2 = new LinkedListDeque<>();
+        for (int i = 0; i < 100; i++) {
+            lld1.addLast(i);
+            lld2.addLast(i);
+        }
+        assertTrue(lld1.equals(lld2));
+        assertTrue(lld1.equals(lld1));
+        lld2.removeLast();
+        assertFalse(lld1.equals(lld2));
+        lld2.addLast(1);
+        assertFalse(lld1.equals(lld2));
     }
 
     /** Time Testing */

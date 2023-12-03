@@ -1,7 +1,9 @@
 package deque;
 
-public class LinkedListDeque<T> {
-    /** Nested Class */
+import java.util.Iterator;
+
+
+public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     private class TNode{
         public T item;
         public TNode prev;
@@ -14,11 +16,9 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /** Instance Variables */
     private int size;
     private TNode sentinel;
 
-    /** Creates an empty linked list deque. */
     public LinkedListDeque() {
         size = 0;
         sentinel = new TNode(null, null, null);
@@ -26,16 +26,15 @@ public class LinkedListDeque<T> {
         sentinel.next = sentinel;
     }
 
-    ////////////////////////
-    //         APIs       //
-    ////////////////////////
-    // 1. Add, Remove, and size operations take CONSTANT time.
-    // 2. Iterating over the LinkedListDeque using a for-each
-    // loop should take time proportional to the number of items.
-    // 3. Do not maintain references to items that are no longer in the deque.
+    /** RULES
+     * 1. Add, Remove, and size operations take CONSTANT time, not
+     * involving any loop or recursion.
+     * 2. get must use iteration, not recursion.
+     * 3. Iterating over the LinkedListDeque using a for-each loop
+     * should take time proportional to the number of items.
+     * 4. Do not maintain references to items that are no longer in the deque.
+     */
 
-    /** Adds an item of type T to the back of the deque.
-     * Assume that item is never null. */
     public void addFirst(T item) {
         TNode front = new TNode(item, sentinel, sentinel.next);
         sentinel.next.prev = front;
@@ -43,8 +42,6 @@ public class LinkedListDeque<T> {
         size += 1;
     }
 
-    /** Adds an item of type T to the back of the deque.
-     * Assume that item is never null. */
     public void addLast(T item) {
        TNode back = new TNode(item, sentinel.prev, sentinel);
        sentinel.prev.next = back;
@@ -52,18 +49,14 @@ public class LinkedListDeque<T> {
        size += 1;
     }
 
-    /** Returns true if deque is empty, false otherwise. */
     public boolean isEmpty() {
         return sentinel.next == sentinel;
     }
 
-    /** Returns the number of items in the deque. */
     public int size() {
         return size;
     }
 
-    /** Prints the items in the deque from first to last, separated by a space.
-     * Once all the items have been printed, print out a new line.*/
     public void printDeque() {
         TNode p = sentinel.next;
         while (p != sentinel) {
@@ -73,8 +66,6 @@ public class LinkedListDeque<T> {
         System.out.println();
     }
 
-    /** Removes and returns the item at the front of the deque.
-     * If no such item exists, returns null. */
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -87,8 +78,6 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /** Removes and returns the item at the back of the deque.
-     * If no such item exists, returns null. */
     public T removeLast() {
         if (isEmpty()) {
             return null;
@@ -101,9 +90,6 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /** Gets the item at the given index,
-     * where 0 is the front, 1 is the next item, and so forth.
-     * If no such item exists, returns null. Must not alter the deque! */
     public T get(int index) {
         if (isEmpty() || index >= this.size()) {
             return null;
@@ -116,15 +102,16 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /** Return the item at the given index of a Naked TNode Linked List. */
+    /** Returns the item at given index, beginning from p. */
     private T getHelper(TNode p, int index) {
-       if (index > 0) {
+       if (index == 0) {
            return p.item;
        } else {
            return getHelper(p.next, index - 1);
        }
     }
 
+    /** Same as get, but uses recursion. */
     public T getRecursive(int index) {
         if (isEmpty() || index > this.size()) {
             return null;
@@ -133,31 +120,50 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /** The Deque objects we’ll make are iterable (i.e. Iterable<T>)
-     * so we must provide this method to return an iterator.
+    @Override
     public Iterator<T> iterator() {
-
+        return new LinkedListDequeIterator();
     }
-    */
 
-    /** Returns whether or not the parameter o is equal to the Deque.
-     o is considered equal if it is a Deque and if it contains the same contents
-     (as governed by the generic T’s equals method) in the same order.
-    public boolean equals(Object o) {
-        if (o instanceof LinkedListDeque) {
-            if (o.size() == this.size()) {
-                TNode a = o.sentinel.next;
-                TNode b = this.sentinel.next;
-                for (int i = 0; i < this.size(); i += 1) {
-                    if (a.item != b.item) {
-                        return false;
-                    }
-                }
-                return true;
-            }
+    private class LinkedListDequeIterator implements Iterator<T> {
+        TNode curr = sentinel.next;
 
+        @Override
+        public boolean hasNext() {
+            return curr != sentinel;
         }
-        return false;
+
+        @Override
+        public T next() {
+            if (hasNext()) {
+                T result = curr.item;
+                curr = curr.next;
+                return result;
+            }
+            return null;
+        }
     }
-    */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (o.getClass() != this.getClass()) {
+            return false;
+        }
+        LinkedListDeque<T> other = (LinkedListDeque<T>) o;
+        if (other.size() != this.size()) {
+            return false;
+        }
+        for (int i = 0; i < size(); i += 1) {
+            if (!get(i).equals(other.get(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
