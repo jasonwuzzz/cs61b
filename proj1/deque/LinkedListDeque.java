@@ -4,12 +4,12 @@ import java.util.Iterator;
 
 
 public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
-    private class TNode{
-        public T item;
-        public TNode prev;
-        public TNode next;
+    private class TNode {
+        private T item;
+        private TNode prev;
+        private TNode next;
 
-        public TNode(T i, TNode p, TNode n) {
+        TNode(T i, TNode p, TNode n) {
             item = i;
             prev = p;
             next = n;
@@ -35,6 +35,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
      * 4. Do not maintain references to items that are no longer in the deque.
      */
 
+    @Override
     public void addFirst(T item) {
         TNode front = new TNode(item, sentinel, sentinel.next);
         sentinel.next.prev = front;
@@ -42,21 +43,20 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         size += 1;
     }
 
+    @Override
     public void addLast(T item) {
-       TNode back = new TNode(item, sentinel.prev, sentinel);
-       sentinel.prev.next = back;
-       sentinel.prev = back;
-       size += 1;
+        TNode back = new TNode(item, sentinel.prev, sentinel);
+        sentinel.prev.next = back;
+        sentinel.prev = back;
+        size += 1;
     }
 
-    public boolean isEmpty() {
-        return sentinel.next == sentinel;
-    }
-
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void printDeque() {
         TNode p = sentinel.next;
         while (p != sentinel) {
@@ -66,6 +66,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         System.out.println();
     }
 
+    @Override
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -78,6 +79,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         }
     }
 
+    @Override
     public T removeLast() {
         if (isEmpty()) {
             return null;
@@ -90,6 +92,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         }
     }
 
+    @Override
     public T get(int index) {
         if (isEmpty() || index >= this.size()) {
             return null;
@@ -104,11 +107,11 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
 
     /** Returns the item at given index, beginning from p. */
     private T getHelper(TNode p, int index) {
-       if (index == 0) {
-           return p.item;
-       } else {
-           return getHelper(p.next, index - 1);
-       }
+        if (index == 0) {
+            return p.item;
+        } else {
+            return getHelper(p.next, index - 1);
+        }
     }
 
     /** Same as get, but uses recursion. */

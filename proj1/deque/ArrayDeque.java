@@ -43,6 +43,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         items = a;
     }
 
+    @Override
     public void addFirst(T item) {
         if (size() == items.length) {
             resize(items.length * 2);
@@ -53,6 +54,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         size += 1;
     }
 
+    @Override
     public void addLast(T item) {
         if (size() == items.length) {
             resize(items.length * 2);
@@ -63,14 +65,12 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         size += 1;
     }
 
-    public boolean isEmpty() {
-        return size() == 0;
-    }
-
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void printDeque() {
         for (int i = (front + 1) % items.length; i < back; i = (i + 1) % items.length) {
             System.out.print(items[i] + " ");
@@ -78,6 +78,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         System.out.println();
     }
 
+    @Override
     public T removeFirst() {
         /**
          * Before performing a remove operation that will bring the number
@@ -98,6 +99,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         return item;
     }
 
+    @Override
     public T removeLast() {
         if (size >= 16 && size * 1.0 / items.length <= 0.25) {
             resize((int) (items.length * 0.5));
@@ -113,6 +115,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         return item;
     }
 
+    @Override
     public T get(int index) {
         if (index < size() && index >= 0) {
             // Transform user-perspective index to real array implementation index.
@@ -122,6 +125,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         return null;
     }
 
+    @Override
     public Iterator<T> iterator() {
         return new ArrayDequeIterator();
      }
@@ -149,21 +153,26 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
         }
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
              return true;
          }
-        if (o instanceof ArrayDeque other) {
-             if (other.size() != this.size()) {
-                 return false;
-             }
-             for (int i = 0; i < size(); i += 1) {
-                 if (!other.get(i).equals(get(i))) {
-                     return false;
-                 }
-             }
-             return true;
-         }
-        return false;
+        if (o == null) {
+            return false;
+        }
+        if (o.getClass() != getClass()) {
+            return false;
+        }
+        ArrayDeque<T> other = (ArrayDeque<T>) o;
+        if (other.size() != size()) {
+            return false;
+        }
+        for (int i = 0; i < size(); i += 1) {
+            if (!other.get(i).equals(get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
