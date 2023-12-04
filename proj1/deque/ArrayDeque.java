@@ -3,7 +3,7 @@ package deque;
 import java.util.Iterator;
 
 
-public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
+public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private T[] items;
     /** Keeps track of deque's front, the index of the first item is
      * (front + 1) % items.length. Front is the position to add first.
@@ -35,8 +35,10 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
 
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
-        for (int  i = (front + 1) % items.length, j = 1; j < size + 1; i = (i + 1) % items.length, j += 1) {
+        int i = (front + 1) % items.length;
+        for (int j = 1; j < size + 1; j += 1) {
             a[j] = items[i];
+            i = (i + 1) % items.length;
         }
         front = 0;
         back = size + 1;
@@ -128,12 +130,12 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
     @Override
     public Iterator<T> iterator() {
         return new ArrayDequeIterator();
-     }
+    }
 
     private class ArrayDequeIterator implements Iterator<T> {
-        public int pos;
+        private int pos;
 
-        public ArrayDequeIterator(){
+        public ArrayDequeIterator() {
             pos = front + 1;
         }
 
@@ -144,27 +146,27 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
 
         @Override
         public T next() {
-           if (hasNext()) {
-               T result = items[pos];
-               pos += 1;
-               return result;
-           }
-           return null;
+            if (hasNext()) {
+                T result = items[pos];
+                pos = (pos + 1) % items.length;
+                return result;
+            }
+            return null;
         }
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) {
-             return true;
-         }
+            return true;
+        }
         if (o == null) {
             return false;
         }
-        if (o.getClass() != getClass()) {
+        if (!(o instanceof Deque)) {
             return false;
         }
-        ArrayDeque<T> other = (ArrayDeque<T>) o;
+        Deque<T> other = (Deque<T>) o;
         if (other.size() != size()) {
             return false;
         }

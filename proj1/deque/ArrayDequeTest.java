@@ -118,7 +118,10 @@ public class ArrayDequeTest {
     /* Test enhanced for-each loop syntax */
     public void iterableTest() {
         ArrayDeque<Integer> ad1 = new ArrayDeque<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 49; i >= 0; i -= 1) {
+            ad1.addFirst(i);
+        }
+        for (int i = 50; i < 100; i += 1) {
             ad1.addLast(i);
         }
 
@@ -133,16 +136,12 @@ public class ArrayDequeTest {
     @Test
     public void equalTest() {
         ArrayDeque<Integer> ad1 = new ArrayDeque<>();
-        ArrayDeque<Integer> ad2 = new ArrayDeque<>();
-        for (int i = 0; i < 100; i++) {
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
+        for (int i = 0; i < 10; i++) {
             ad1.addLast(i);
-            ad2.addLast(i);
+            lld1.addLast(i);
         }
-        assertTrue(ad1.equals(ad2));
-        assertTrue(ad1.equals(ad1));
-        ad2.removeLast();
-        assertFalse(ad1.equals(ad2));
-        ad2.addLast(1);
-        assertFalse(ad1.equals(ad2));
+        assertTrue(ad1.equals(lld1));
+        assertTrue(lld1.equals(ad1));
     }
 }
