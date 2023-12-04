@@ -133,18 +133,18 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     private class ArrayDequeIterator implements Iterator<T> {
-        private int pos = front + 1;
+        private int pos = 0;
 
         @Override
         public boolean hasNext() {
-            return pos < back;
+            return pos < size();
         }
 
         @Override
         public T next() {
             if (hasNext()) {
-                T result = items[pos];
-                pos = (pos + 1) % items.length;
+                T result = get(pos);
+                pos += 1;
                 return result;
             }
             return null;

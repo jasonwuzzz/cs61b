@@ -115,8 +115,16 @@ public class ArrayDequeTest {
     }
 
     @Test
+    public void hasNextTest() {
+        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        ad1.addFirst(0);
+        Iterator<Integer> iter = ad1.iterator();
+        assertTrue(iter.hasNext());
+    }
+
+    @Test
     /* Test enhanced for-each loop syntax */
-    public void iterableTest() {
+    public void nextTest() {
         ArrayDeque<Integer> ad1 = new ArrayDeque<>();
         for (int i = 49; i >= 0; i -= 1) {
             ad1.addFirst(i);
@@ -124,10 +132,10 @@ public class ArrayDequeTest {
         for (int i = 50; i < 100; i += 1) {
             ad1.addLast(i);
         }
-
         int counter = 0;
-        for (int item : ad1) {
-            assertEquals(counter, item);
+        Iterator<Integer> iter = ad1.iterator();
+        while (iter.hasNext()) {
+            assertEquals(counter, (int) iter.next());
             counter += 1;
         }
     }
