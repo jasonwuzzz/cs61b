@@ -133,11 +133,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     private class ArrayDequeIterator implements Iterator<T> {
-        private int pos;
-
-        public ArrayDequeIterator() {
-            pos = front + 1;
-        }
+        private int pos = front + 1;
 
         @Override
         public boolean hasNext() {

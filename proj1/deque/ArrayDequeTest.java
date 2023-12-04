@@ -126,9 +126,8 @@ public class ArrayDequeTest {
         }
 
         int counter = 0;
-        Iterator<Integer> iter = ad1.iterator();
-        while (iter.hasNext()) {
-            assertEquals(counter, (int) iter.next());
+        for (int item : ad1) {
+            assertEquals(counter, item);
             counter += 1;
         }
     }
