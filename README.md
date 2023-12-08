@@ -83,7 +83,7 @@ Start after watching the lecture corresponding to the release date of that assig
 #### Week 04
 - [x] [Fri 01 Dec 2023] Lecture 9 (Extends, Casting, Higher Order Functions)
 - [x] [Sun 03 Dec 2023] Lecture 10 (Subtype Polymorphism vs. HoFs)
-- [ ] Lecture 11 (Exceptions, Iterators, Object Methods)
+- [x] [Sun 03 Dec 2023] Lecture 11 (Exceptions, Iterators, Object Methods)
 - [ ] Disc 4 (Inheritance and Implements)
 - [ ] Exam Prep 4 (Inheritance and Implements)
 - [ ] Lab 4 (Git and Debugging)
