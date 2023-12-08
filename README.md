@@ -75,7 +75,7 @@ Start after watching the lecture corresponding to the release date of that assig
 - [x] [Tue 28 Nov 2023] Lecture 6 or Reading 2.3, 2.4 (LLists, Arrays)
 - [x] [Tue 28 Nov 2023] Lecture 7 or Reading 2.5 (ALists, Resizing, vs. SLists)
 - [x] [Thu 30 Nov 2023] Lecture 8 or Reading 4.1 (Inheritance, Implements)
-- [ ] Discussion 3 (Scope, Static, and Linked Lists)
+- [x] [Fri 01 Dec 2023] Discussion 3 (Scope, Static, and Linked Lists)
 - [ ] Exam Prep Discussion 3 (Arrays, Linked Lists)
 - [x] [Wed 29 Nov 2023] Lab 3 (Randomized Testing and Timing Tests)
 - [x] [Mon 04 Dec 2023] Project 1 (Data Structures)
