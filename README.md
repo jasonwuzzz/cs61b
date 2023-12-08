@@ -86,4 +86,4 @@ Start after watching the lecture corresponding to the release date of that assig
 - [x] [Sun 03 Dec 2023] Lecture 11 (Exceptions, Iterators, Object Methods)
 - [x] [Fri 01 Dec 2023] Disc 4 (Inheritance and Implements)
 - [ ] Exam Prep 4 (Inheritance and Implements)
-- [ ] Lab 4 (Git and Debugging)
+- [x] [Fri 08 Dec 2023] Lab 4 (Git and Debugging)
