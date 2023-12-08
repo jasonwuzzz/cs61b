@@ -87,3 +87,4 @@ Start after watching the lecture corresponding to the release date of that assig
 - [x] [Fri 01 Dec 2023] Disc 4 (Inheritance and Implements)
 - [x] [Fri 08 Dec 2023] Exam Prep 4 (Inheritance and Implements)
 - [x] [Fri 08 Dec 2023] Lab 4 (Git and Debugging)
+- [x] [Fri 08 Dec 2023] Midterm 1
