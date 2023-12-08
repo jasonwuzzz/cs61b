@@ -56,33 +56,34 @@ Start after watching the lecture corresponding to the release date of that assig
 ### Study Log
 #### Week 01
 - [x] [Mon 20 Nov 2023] HW0 (Basic Java Programs)
-- [x] [Mon 20 Nov 2023] Discussion 1 (Intro to Java)
-- [x] [Mon 20 Nov 2023] Lecture 1 or Reading 1.1 (Intro, Hello World Java)
+- [x] [Mon 20 Nov 2023] Disc 1 (Intro to Java)
+- [x] [Mon 20 Nov 2023] Lecture 1 (Intro, Hello World Java)
 - [x] [Mon 20 Nov 2023] Lab 1 Setup (Setting Up Your Computer)
 - [x] [Mon 20 Nov 2023] Lab 1 (IntelliJ, git)
-- [x] [Mon 20 Nov 2023] Lecture 2 or Reading 1.2 (Defining and Using Classes)
+- [x] [Mon 20 Nov 2023] Lecture 2 (Defining and Using Classes)
 - [x] [Tue 21 Nov 2023] Project 0 (2048)
 
 #### Week 02
-- [x] [Tue 21 Nov 2023] Lecture 3 or Reading 3.1 (Testing)
-- [x] [Sun 26 Nov 2023] Lecture 4 or Reading 2.1 (References, Recursion, and Lists)
-- [x] [Tue 28 Nov 2023] Discussion 2 (Intro to Java)
-- [x] [Sun 26 Nov 2023] Exam Prep Discussion 2 (Scope, Pass-by-Value, Static)
-- [x] [Tue 28 Nov 2023] Lecture 5 or Reading 2.2 (SLLists, Nested Classes, Sentinel Nodes)
+- [x] [Tue 21 Nov 2023] Lecture 3 (Testing)
+- [x] [Sun 26 Nov 2023] Lecture 4 (References, Recursion, and Lists)
+- [x] [Tue 28 Nov 2023] Disc 2 (Intro to Java)
+- [x] [Sun 26 Nov 2023] Exam Prep 2 (Scope, Pass-by-Value, Static)
+- [x] [Tue 28 Nov 2023] Lecture 5 (SLLists, Nested Classes, Sentinel Nodes)
 - [x] [Tue 28 Nov 2023] Lab 2 (Testind and Debugging)
 
 #### Week 03
-- [x] [Tue 28 Nov 2023] Lecture 6 or Reading 2.3, 2.4 (LLists, Arrays)
-- [x] [Tue 28 Nov 2023] Lecture 7 or Reading 2.5 (ALists, Resizing, vs. SLists)
-- [x] [Thu 30 Nov 2023] Lecture 8 or Reading 4.1 (Inheritance, Implements)
-- [x] [Fri 01 Dec 2023] Discussion 3 (Scope, Static, and Linked Lists)
-- [x] [Fri 01 Dec 2023] Exam Prep Discussion 3 (Arrays, Linked Lists)
+- [x] [Tue 28 Nov 2023] Lecture 6 (LLists, Arrays)
+- [x] [Tue 28 Nov 2023] Lecture 7 (ALists, Resizing, vs. SLists)
+- [x] [Thu 30 Nov 2023] Lecture 8 (Inheritance, Implements)
+- [x] [Fri 01 Dec 2023] Disc 3 (Scope, Static, and Linked Lists)
+- [x] [Fri 01 Dec 2023] Exam Prep 3 (Arrays, Linked Lists)
 - [x] [Wed 29 Nov 2023] Lab 3 (Randomized Testing and Timing Tests)
 - [x] [Mon 04 Dec 2023] Project 1 (Data Structures)
 
-#### Get started in the first few weeks
-- [ ] Lecture 9 or Reading 4.2 (Extends, Casting, Higher Order Functions)
-- [ ] Discussion 10 (Inheritance)
-- [ ] Lecture 10 or Reading 4.3 (Subtype Polymorphism vs. HoFs)
-- [ ] Lab 4: Peer Code Review (Berkeley students only)
-- [ ] Lecture 11 or Reading 6.1, 6.2, 6.3, 6.4 (Exceptions, Iterators, Object Methods)
+#### Week 04
+- [ ] Lecture 9 (Extends, Casting, Higher Order Functions)
+- [ ] Lecture 10 (Subtype Polymorphism vs. HoFs)
+- [ ] Lecture 11 (Exceptions, Iterators, Object Methods)
+- [ ] Disc 4 (Inheritance and Implements)
+- [ ] Exam Prep 4 (Inheritance and Implements)
+- [ ] Lab 4 (Git and Debugging)
